@@ -7,8 +7,30 @@ use Illuminate\Http\Request;
 use App\Models\User; 
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 class ApiController extends Controller
 {
+
+  public function index()
+  {
+      return view('pagination');
+  }
+
+    public function getEmployees(Request $request) {
+
+      $perPage = $request->input('perPage', 10); // Number of records per page, default is 10
+      $page = $request->input('page', 1); // Current page, default is 1
+      $offset = ($page - 1) * $perPage;
+      $employees = DB::table('employees')
+      ->skip($offset)
+      ->take(10)
+      ->get();
+      return response()->json($employees);
+    }
+
+
+
+
     //Register Api
     public function register(Request $request){
       $request->validate([

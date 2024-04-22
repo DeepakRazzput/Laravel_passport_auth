@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Api\ApiController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+Route::get('/employees', [ApiController::class, 'index']);
 Route::get('/', function () {
     return view('welcome');
 });

@@ -21,7 +21,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 //open routes
 
-
+Route::get('/employees', [ApiController::class,"getEmployees"]);
 Route::post('register',[ApiController::class,"register"]);
 Route::post('login',[ApiController::class,"login"]);
 
